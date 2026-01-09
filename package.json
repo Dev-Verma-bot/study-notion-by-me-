@@ -64,6 +64,7 @@
   },
   "devDependencies": {
     "tailwindcss": "^3.2.7",
+    "update-browserslist-db": "^1.2.3",
     "vite-plugin-remove-console": "^2.2.0"
   }
 }
