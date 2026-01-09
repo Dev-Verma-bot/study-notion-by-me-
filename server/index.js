@@ -14,7 +14,7 @@ const { cloudinary_connect } = require("./config/cloudinary_connect");
 
 require("dotenv").config();
 
-const port = process.env.port || 4000;
+const port = process.env.PORT || 4000;
 cloudinary_connect();
 db_connect();
 
