@@ -5,18 +5,18 @@ const send_mail= async function (email,title,body){
          console.trace("Mail function called from:");
     try{
 const transporter = nodemailer.createTransport({
-  host: process.env.mail_host,
+  host: process.env.MAIL_HOST,
     port: 465,
   secure: true,
    auth: {
-    user: process.env.mail_user,
-    pass: process.env.mail_pass,
+    user: process.env.MAIL_USER,
+    pass: process.env.MAIL_PASS,
   },
 }
 );
 
 const info=await transporter.sendMail({
-   from: `"Study Notion" <${process.env.mail_user}>`,
+   from: `"Study Notion" <${process.env.MAIL_USER}>`,
     to:email,
     subject:title,
     html:`${body}`
