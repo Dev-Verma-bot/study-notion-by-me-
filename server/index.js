@@ -26,7 +26,7 @@ App.use(file_upload({
 }));
 
 App.use(cors({
-  origin: 'https://study-notion-by-qm1038hup-dev-vermas-projects-79573316.vercel.app/',
+  origin: 'https://study-notion-by-qm1038hup-dev-vermas-projects-79573316.vercel.app',
   credentials: true
 }));
 
