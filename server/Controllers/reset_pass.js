@@ -39,7 +39,7 @@ exports.reset_pass_token = async (req, res) => {
         );
 
         // create frontend URL
-        const url = `http://localhost:3000/reset_pass/${token}`;
+        const url = `https://study-notion-by-me.vercel.app/reset_pass/${token}`;
 
         // send email
         await send_mail(
