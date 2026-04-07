@@ -21,10 +21,12 @@ const info=await transporter.sendMail({
     subject:title,
     html:`${body}`
 })
+console.log(`Mail sent successfully to ${email}`);
 return info;
 }
 catch(error){
-        console.log("unable to send mail")
+        console.error("Unable to send mail:", error.message);
+        throw error;
 }
 }
 

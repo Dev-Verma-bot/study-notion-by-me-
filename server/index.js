@@ -18,15 +18,35 @@ const port = process.env.PORT || 4000;
 cloudinary_connect();
 db_connect();
 
-App.use(express.json());
+App.use(
+  express.json({
+    verify: (req, res, buf) => {
+      if (req.originalUrl.includes("/study_notion/payment/webhook")) {
+        req.rawBody = buf.toString();
+      }
+    },
+  })
+);
 App.use(cookie_parser());
 App.use(file_upload({
   useTempFiles: true,
   tempFileDir: '/tmp/'
 }));
 
+const allowedOrigins = [
+  "https://study-notion-by-qm1038hup-dev-vermas-projects-79573316.vercel.app"
+];
+
 App.use(cors({
-  origin: 'https://study-notion-by-qm1038hup-dev-vermas-projects-79573316.vercel.app',
+  origin: function (origin, callback) {
+    if (!origin) return callback(null, true);
+
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+    } else {
+      callback(new Error("Not allowed by CORS"));
+    }
+  },
   credentials: true
 }));
 
