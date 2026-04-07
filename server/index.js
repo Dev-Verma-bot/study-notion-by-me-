@@ -34,7 +34,8 @@ App.use(file_upload({
 }));
 
 const allowedOrigins = [
-  "https://study-notion-by-qm1038hup-dev-vermas-projects-79573316.vercel.app"
+  
+  "https://study-notion-by-me.vercel.app"
 ];
 
 App.use(cors({
