@@ -21,9 +21,11 @@ const Navbar = () => {
   const fetch_sublinks = async () => {
     try {
       const result = await ApiConnect("GET", categories.category_api);
-      set_sub_links(result.data.data);
+      const category_data = result?.data?.data;
+      set_sub_links(Array.isArray(category_data) ? category_data : []);
     } catch (error) {
-          }
+      set_sub_links([]);
+    }
   };
 
   useEffect(() => {
@@ -63,7 +65,7 @@ const Navbar = () => {
                   absolute top-9 left-0 w-max flex flex-col gap-2 p-4 
                   bg-richblack-900 text-white shadow-lg rounded-md transition-all duration-200 z-[9999]"
                 >
-                  {sub_links.length > 0 ? (
+                  {sub_links?.length > 0 ? (
                     sub_links.map((sub, index) => (
                       <Link
                         to={`/catalog/${sub.name}`}
